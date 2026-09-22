@@ -5,7 +5,7 @@ from pybricks.robotics import DriveBase
 from pybricks.parameters import Button, Color, Direction, Port, Side, Stop, Axis
 from pybricks.tools import wait, StopWatch
 import umath, urandom
-from robo import RoboTBR, MotorRobo, MotorConjunto
+from roboM import RoboTBR, MotorRobo, MotorConjunto
 
 stopwatch = StopWatch()
 
@@ -199,111 +199,95 @@ class Execucao:
 
 
 def executarEstrategia1(robotHeroes):
-    '''
-    Empurrar a caixa
+    
+    #Empurrar a caixa
 
-    '''
-
+    robotHeroes.zerarConfiguracoes()
     robotHeroes.iniciar(anguloPartida=0, posicaoTapete=[0,0], parametroAjusteGirar=1.0, velocidadePadraoAndar=500, inLog=True)
     
-    '''
-    robotHeroes.motorLateralEsquerdo.moverParaAngulo(-200)
-    robotHeroes.motorLateralEsquerdo.moverParaAngulo(-200)
-
-    robotHeroes.motorLateralEsquerdo.zerarAngulo()
-    robotHeroes.motorLateralDireito.zerarAngulo()
-    '''
-
-    
     robotHeroes.andarParaFrente(210, velocidade=500)
-    robotHeroes.girarAntiHorario(30)
-    robotHeroes.andarParaFrente(210, velocidade=500)
-    #robotHeroes.motorLateralEsquerdo.moverParaAngulo(135)
-    robotHeroes.girarHorario(55, velocidade=150)
-    robotHeroes.andarParaFrente(480)
-    robotTBR.girarAntiHorario(45, velocidade=300)
-    robotHeroes.andarParaFrente(150, velocidade=300)
-    
-    #robotTBR.motorLateralEsquerdo.moverParaAngulo(-130)
-    #robotTBR.motorLateralDireito.moverParaAngulo(120)
-    
-    return True
-    robotTBR.andarParaFrente(50)
-    robotTBR.girarAntiHorario(40, velocidade=300)
-    robotTBR.andarParaTras(80, velocidade=500)
-    robotTBR.motorLateralDireito.moverParaAngulo(-120)
-    robotTBR.girarHorario(60)
-    robotTBR.andarParaFrente(400)
-    robotTBR.girarAntiHorario(45)
-    robotTBR.andarParaFrente(480, velocidade=150)
-    robotTBR.andarParaTras(410)
-    robotTBR.girarHorario(45+15)
-    robotTBR.andarParaFrente(350)
-    robotTBR.motorLateralEsquerdo.moverParaAngulo(20)
-    robotTBR.girarHorario(90)
+    robotHeroes.girarAntiHorario(25)
+    robotHeroes.andarParaFrente(200, velocidade=500)
+    robotHeroes.girarHorario(38, velocidade=100)
+    robotHeroes.andarParaFrente(580)
+    robotHeroes.girarAntiHorario(8, velocidade=100)
+    robotHeroes.motorLateralEsquerdo.moverParaAngulo(-130)
+    robotHeroes.girarAntiHorario(45, velocidade=100)
+    robotHeroes.andarParaFrente(70, velocidade=100)
     
 
-    #robotTBR.motorLateralDireito.iniciar(gears=[16,16], direcaoPositiva=True, iniciarStalled=None)
-    #robotTBR.motorLateralEsquerdo.iniciar(gears=[16,16], direcaoPositiva=False, iniciarStalled=None)
-    #robotTBR.motorLateralDireito.moverParaAngulo(100)
-    #robotTBR.motorLateralEsquerdo.moverParaAngulo(100)
-    #robotTBR.motorCentralPrincipal.iniciar(direcaoPositiva=True, iniciarStalled=None)
-    #robotTBR.motorCentralPrincipal.moverParaAngulo(1000)
-    
+    #reposicionar para empurrar o carro
+     
+    robotHeroes.andarParaTras(130, velocidade=300)
+    robotHeroes.girarHorario(37, velocidade=100)
+    robotHeroes.andarParaFrente(520, velocidade=300)
+    robotHeroes.girarAntiHorario(30, velocidade=100)
+    robotHeroes.andarParaFrente(415, velocidade=500)
 
-    
-    
-    #robotTBR.setMotorAuxiliar(gears=[20, 12, 20, 20, 20, 20], parametroAngulo=1.70, anguloMaximo=60, direcaoPositiva=False)
-    #robotTBR.andarParaTras(500)
-    #return
-    
-    #robotTBR.subirRampa(45, 700, velocidade=500)
-    
-    '''
-    robotTBR.andarParaFrente(200)
-    robotTBR.motorLateralDireito.moverTempo(200, direcaoPositiva=False, wait=False)
-    robotTBR.motorLateralEsquerdo.moverTempo(200, direcaoPositiva=False, wait=True)
-    robotTBR.andarParaFrente(200)
-    robotTBR.motorLateralDireito.moverTempo(100, direcaoPositiva=False, wait=False)
-    robotTBR.motorLateralEsquerdo.moverTempo(100, direcaoPositiva=False, wait=True)
-    robotTBR.andarParaFrente(200)
-    '''
-    '''
-    robotTBR.motorLateralDireito.moverTempo(1000)
-    robotTBR.motorLateralEsquerdo.moverTempo(2000)
-    robotTBR.motorLateralConjunto.moverParaAngulo(-100)
-    '''
-    #robotTBR.andarParaFrente(500, velocidade=900)
-    #robotTBR.girarAntiHorario(90, modo="MOTORESQUERDO")
-    #robotTBR.andarParaFrente(100, velocidade=100)
-    #robotTBR.motorLateralDireito.moverTempo(1000)
-    #robotTBR.motorLateralEsquerdo.moverTempo(2000)
-    #robotTBR.motorLateralDireito.moverParaAngulo(100)
-    #robotTBR.motorLateralEsquerdo.moverParaAngulo(100)
+    #sair e baixar a bandeirinha
+    robotHeroes.andarParaTras(450, velocidade=200)
+    robotHeroes.girarHorario(40, velocidade=100)
+    robotHeroes.motorLateralDireito.moverParaAngulo(-130)
+    robotHeroes.andarParaFrente(306, velocidade=500)
+    robotHeroes.motorLateralEsquerdo.moverParaAngulo(-90)
+    robotHeroes.girarAntiHorario(300, velocidade=100)
+    robotHeroes.girarAntiHorario(300, velocidade=100)
     
 
     return True
 
-def executarEstrategia2(robotTBR, tempo):
+
+
+
+def executarEstrategia2(robotHeroes, tempo):
+    
+    #Deixar    
+    robotHeroes.zerarConfiguracoes()
+    robotHeroes.iniciar(anguloPartida=0, posicaoTapete=[0,0], parametroAjusteGirar=1.18, velocidadePadraoAndar=500, inLog=True)
+
+    robotHeroes.motorLateralEsquerdo.moverParaAngulo(-130)
+    robotHeroes.andarParaFrente(300, velocidade=400)
+    robotHeroes.girarHorario(10, velocidade=400)
+
+    robotHeroes.motorLateralEsquerdo.moverParaAngulo(100)
+    robotHeroes.girarHorario(100, velocidade=50)
+    robotHeroes.andarParaTras(100, velocidade=400)
+
+    robotHeroes.girarHorario(60, velocidade=400)
+    robotHeroes.andarParaFrente(450, velocidade=400)
+    robotHeroes.girarAntiHorario(10, velocidade=400)
+    robotHeroes.andarParaFrente(110, velocidade=100)
+    robotHeroes.girarHorario(140, velocidade=100)
+    #robotHeroes.andarParaFrente(250, velocidade=400)
+
+
+
+
+
+
+    
+    return True
+    
+    
+    '''
     #Deixar
-
-    robotTBR.iniciar(anguloPartida=0, posicaoTapete=[0,0], parametroAjusteGirar=1.18, velocidadePadraoAndar=500, inLog=True)
+    robotHeroes.iniciar(anguloPartida=0, posicaoTapete=[0,0], parametroAjusteGirar=1.18, velocidadePadraoAndar=500, inLog=True)
     
     #robotTBR.motorLateralEsquerdo.moverParaAngulo(160, wait=False)
     #robotTBR.motorLateralDireito.moverParaAngulo(160, wait=True)
     #robotTBR.motorLateralConjunto.moverParaAngulo(160)
     
-    robotTBR.andarParaFrente(352, velocidade=400)
-    robotTBR.girarAntiHorario(43)
-    robotTBR.andarParaFrente(303, velocidade=400)
-    robotTBR.andarParaFrente(200, velocidade=100)
-    robotTBR.girarHorario(43)
-    robotTBR.andarParaFrente(100, velocidade=400)
+    #funcionando entregar os epis
+    robotHeroes.andarParaFrente(420, velocidade=400)
+    robotHeroes.girarAntiHorario(33, velocidade=100)
+    robotHeroes.andarParaFrente(600, velocidade=100)
+    #entregar maker
+    robotHeroes.girarHorario(40, velocidade=100)
+    robotHeroes.andarParaFrente(360,velocidade=200)
+    
     
     return True
-    
-    #robotTBR.motorLateralDireito.moverParaAngulo(160, wait=False)
-    #robotTBR.motorLateralDireito.moverParaAngulo(160, wait=False)
+    '''
     return True
     
     robotTBR.andarParaFrente(680, velocidade=500)
@@ -311,13 +295,22 @@ def executarEstrategia2(robotTBR, tempo):
     robotTBR.andarParaFrente(145, velocidade=500)
     robotTBR.motorLateralDireito.moverParaAngulo(160)
     robotTBR.andarParaTras(200, velocidade=200)
-        
-def executarEstrategia3(robotTBR):
 
-    robotTBR.iniciar(anguloPartida=0, posicaoTapete=[0,0], parametroAjusteGirar=1.0, velocidadePadraoAndar=500, inLog=True)
+
+
+     
+def executarEstrategia3(robotHeroes):
+
+    robotHeroes.iniciar(anguloPartida=0, posicaoTapete=[0,0], parametroAjusteGirar=1.0, velocidadePadraoAndar=500, inLog=True)
+    robotHeroes.andarParaFrente(400, velocidade=400)
+    robotHeroes.motorLateralConjunto.moverParaAngulo(100)
     
+    return True
     
-    robotTBR.andarParaFrente(680, velocidade=500)
+    return True
+
+
+    #robotTBR.andarParaFrente(680, velocidade=500)
                   
 def executarEstrategia4(robotTBR):
 
@@ -326,17 +319,23 @@ def executarEstrategia4(robotTBR):
     
     robotTBR.andarParaFrente(680, velocidade=500)
 
-def executarEstrategia5(robotTBR):
+def executarEstrategia5(robotHeroes):
 
-    robotTBR.iniciar(anguloPartida=0, posicaoTapete=[0,0], parametroAjusteGirar=1.0, velocidadePadraoAndar=500, inLog=True)
+    #robotTBR.iniciar(anguloPartida=0, posicaoTapete=[0,0], parametroAjusteGirar=1.0, velocidadePadraoAndar=500, inLog=True)
     
     
-    robotTBR.andarParaFrente(680, velocidade=500)
+    #robotTBR.andarParaFrente(680, velocidade=500)
+
+   robotHeroes.iniciar(anguloPartida=0, posicaoTapete=[0,0], parametroAjusteGirar=1.0, velocidadePadraoAndar=500, inLog=True)     
+   robotHeroes.andarParaFrente(300, velocidade=500)
+   robotHeroes.motorLateralEsquerdo(moverParaAngulo=160)
+   robotHeroes.motorLateralEsquerdo(moverParaAngulo=0)
+
+   return True
     
 
 robotTBR=RoboTBR()
 exec = Execucao()
 #exec.configuracoes(robotTBR)
 
-exec.menu(robotTBR, "2")
-
+exec.menu(robotTBR, )
